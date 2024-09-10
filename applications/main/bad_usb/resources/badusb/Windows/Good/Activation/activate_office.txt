@@ -1,0 +1,26 @@
+REM Author: poiuztreq
+REM Description: Activate Office permanently with MAS
+REM Version: 1.0
+REM Category: Good
+DELAY 500
+GUI r
+DELAY 500
+STRING powershell Start-Process powershell -Verb runAs
+CTRL-SHIFT ENTER
+DELAY 1500
+SHIFT TAB
+DELAY 1500
+ENTER
+DELAY 1500
+STRING irm https://massgrave.dev/get | iex
+ENTER
+DELAY 4000
+STRING 2
+DELAY 1500
+STRING 1
+DELAY 1500
+STRING 1
+DELAY 10000
+STRING ENTER
+DELAY 1500
+STRING 0

