@@ -1,31 +1,13 @@
 ## Main changes
-- NFC: 
-    - OFW: Ultralight C authentication with des key
-    - EMV Transactions less nested, hide if unavailable (by @Willy-JL | PR #771)
-- LF RFID: 
-    - Update T5577 password list (by @korden32 | PR #774)
-    - Add DEZ 8 display form for EM4100 (by @korden32 | PR #776 & (#777 by @mishamyte))
-* JS: Refactor widget and keyboard modules, fix crash (by @Willy-JL | PR #770)
-* OFW: Event Loop Timers
-* OFW: Updater: resource compression
+- SubGHz:
+    - Fix rare crash when opening Read mode via Frequency analyzer
+    - Refactor frequency analyzer code for better readability (by @derskythe | PR #782)
+* Docs: Remove not printable symbols and update docs (by @derskythe | PR #783)
 * Apps: **Check out more Apps updates and fixes by following** [this link](https://github.com/xMasterX/all-the-plugins/commits/dev)
 ## Other changes
-* NFC: Cache plugin name not full path, saves some RAM (by @Willy-JL)
-* OFW: copro: bumped to 1.20.0
-* OFW: input_srv: Put input state data on the stack of the service
-* OFW: Coalesce some allocations
-* OFW: Fix iButton/LFRFID Add Manually results being discarded
-* OFW: updater: slightly smaller image
-* OFW: Updater: Fix double dir cleanup
-* OFW: cli: storage: minor subcommand lookup refactor
-* OFW: LFRFID Securakey: Add Support for RKKTH Plain Text Format
-* OFW: NFC: Add mf_classic_set_sector_trailer_read function
-* OFW: Separate editing and renaming in iButton and LFRFID
-* OFW: New js modules documentation added 
-* OFW: Update link to mfkey32
-* OFW: NFC: Desfire Renderer Minor Debug 
-* OFW: RPC: Fix input lockup on disconnect 
-* OFW: Thread Signals
+* Misc: Fix typo in comment in QueueTools.py (by @eltociear | PR #785)
+* OFW: Reordered VS-Code Tasks to follow the `Release` > `Debug` schema
+* OFW: Remove unused entries from .editorconfig
 <br><br>
 #### Known NFC post-refactor regressions list: 
 - Mifare Mini clones reading is broken (original mini working fine) (OFW)

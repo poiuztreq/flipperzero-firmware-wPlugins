@@ -73,10 +73,6 @@ static void subghz_load_custom_presets(SubGhzSetting* setting) {
         // Pagers
         {"Pagers",
          "02 0D 07 04 08 32 0B 06 10 64 11 93 12 0C 13 02 14 00 15 15 18 18 19 16 1B 07 1C 00 1D 91 20 FB 21 56 22 10 00 00 C0 00 00 00 00 00 00 00"},
-
-        // # HND - FM preset
-        {"HND_1",
-         "02 0D 0B 06 08 32 07 04 14 00 13 02 12 04 11 36 10 69 15 32 18 18 19 16 1D 91 1C 00 1B 07 20 FB 22 10 21 56 00 00 C0 00 00 00 00 00 00 00"},
     };
 
     FlipperFormat* fff_temp = flipper_format_string_alloc();
@@ -208,6 +204,28 @@ SubGhz* subghz_alloc(bool alloc_for_tx_only) {
     size_t preset_count = subghz_setting_get_preset_count(setting);
     subghz_last_settings_load(subghz->last_settings, preset_count);
     if(!alloc_for_tx_only) {
+        // Make sure we select a frequency available in loaded setting configuration
+        uint32_t last_frequency = subghz->last_settings->frequency;
+        size_t count = subghz_setting_get_frequency_count(setting);
+        bool found_last = false;
+        bool found_default = false;
+        for(size_t i = 0; i < count; i++) {
+            uint32_t frequency = subghz_setting_get_frequency(setting, i);
+            if(frequency == last_frequency) {
+                found_last = true;
+                break;
+            }
+            if(frequency == SUBGHZ_LAST_SETTING_DEFAULT_FREQUENCY) found_default = true;
+        }
+        if(!found_last) {
+            if(found_default) {
+                last_frequency = SUBGHZ_LAST_SETTING_DEFAULT_FREQUENCY;
+            } else if(count > 0) {
+                last_frequency = subghz_setting_get_frequency(setting, 0);
+            }
+            subghz->last_settings->frequency = last_frequency;
+        }
+
         subghz_txrx_set_preset_internal(
             subghz->txrx, subghz->last_settings->frequency, subghz->last_settings->preset_index);
         subghz->history = subghz_history_alloc();

@@ -1,3 +1,7 @@
+## 3.12
+ - Map button combinations to sub files.
+## 3.11
+ - Fix hanging issue on new FW. (Free popup on exit)
 ## 3.10
  - Common code update.
 ## 3.9

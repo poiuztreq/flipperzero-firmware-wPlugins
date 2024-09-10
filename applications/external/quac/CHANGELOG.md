@@ -1,3 +1,13 @@
+
+## 0.6.3
+
+- Updated for firmware SDK 0.105.0
+
+## 0.6.2
+
+- Fix IR Import bus fault on empty, explain to hold right when empty (By Willy-JL)
+- Add hint text on Empty group
+
 ## 0.6.1
 
 - Several crash fixes when Importing files and Creating groups
